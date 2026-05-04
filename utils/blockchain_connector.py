@@ -10,6 +10,7 @@ from typing import Dict, Any, Optional, List
 from datetime import datetime
 import time
 import hashlib
+import secrets
 
 class BlockchainConnector:
     """Connecteur multi-blockchain pour les données on-chain"""
@@ -278,8 +279,8 @@ class BlockchainConnector:
             data.append({
                 'tx_hash': f"0x{hashlib.md5(f'{address}_{i}'.encode()).hexdigest()[:64]}",
                 'block_number': current_block - np.random.randint(0, blocks_back),
-                'from_address': address if np.random.random() < 0.7 else f"0x{np.random.randint(0, 2**160):040x}",
-                'to_address': address if np.random.random() < 0.3 else f"0x{np.random.randint(0, 2**160):040x}",
+                'from_address': address if np.random.random() < 0.7 else f"0x{secrets.token_hex(20)}",
+                'to_address': address if np.random.random() < 0.3 else f"0x{secrets.token_hex(20)}",
                 'tx_value_eth': np.random.lognormal(0.5, 2.0),
                 'gas_used': np.random.choice([21000, 65000, 150000, 200000]),
                 'gas_price': np.random.randint(10, 200),
