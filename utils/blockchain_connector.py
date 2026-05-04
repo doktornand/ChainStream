@@ -264,7 +264,7 @@ class BlockchainConnector:
         return pd.DataFrame(processed)
     
     def _generate_synthetic_data(self, address: str, network: str, blocks_back: int) -> pd.DataFrame:
-        """Génère des données synthétiques pour les tests (quand API non disponible)"""
+        #Génère des données synthétiques pour les tests (quand API non disponible)
         seed = int(hashlib.md5(f"{address}_{network}".encode()).hexdigest()[-8:], 16)
         np.random.seed(seed)
         
