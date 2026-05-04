@@ -141,7 +141,7 @@ if 'config' not in st.session_state:
         'sandwich_threshold': 0.5,
         'ultra_threshold': 0.6,
         'max_transactions': 10000,
-        'default_methods': ['Mixer', 'Wash Trading', 'Rug Pull']
+        'default_methods': ['Mixer Detection', 'Wash Trading', 'Rug Pull']
     }
 # Initialisation de la session - AVANT la navigation
 if 'analyzer_wrapper' not in st.session_state:
