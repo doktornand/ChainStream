@@ -274,11 +274,12 @@ class BlockchainConnector:
         
         data = []
         current_block = 19000000 if network == 'ethereum' else 40000000
+        safe_blocks_back = min(blocks_back, 1_000_000)
         
         for i in range(n_transactions):
             data.append({
                 'tx_hash': f"0x{hashlib.md5(f'{address}_{i}'.encode()).hexdigest()[:64]}",
-                'block_number': current_block - np.random.randint(0, blocks_back),
+                'block_number': current_block - np.random.randint(0, safe_blocks_back),
                 'from_address': address if np.random.random() < 0.7 else f"0x{secrets.token_hex(20)}",
                 'to_address': address if np.random.random() < 0.3 else f"0x{secrets.token_hex(20)}",
                 'tx_value_eth': np.random.lognormal(0.5, 2.0),
